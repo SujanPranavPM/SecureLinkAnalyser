@@ -1,0 +1,24 @@
+2026-02-27 23:51:03,362 [WARNING] No trained model found at models/best_model.pkl — using heuristic fallback.
+2026-02-27 23:51:03,369 [INFO] Starting API server on port 5000 | debug=False
+2026-02-27 23:51:03,444 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-27 23:51:03,446 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-27 23:51:56,695 [INFO] 127.0.0.1 - - [27/Feb/2026 23:51:56] "[33mGET / HTTP/1.1[0m" 404 -
+2026-02-27 23:51:56,773 [INFO] 127.0.0.1 - - [27/Feb/2026 23:51:56] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-27 23:52:03,437 [INFO] 127.0.0.1 - - [27/Feb/2026 23:52:03] "OPTIONS /predict HTTP/1.1" 200 -
+2026-02-27 23:52:03,688 [INFO] PREDICT | url=http://secure-bank-login-verification.com/update-account | prediction=Suspicious | conf=0.350 | 2.57ms
+2026-02-27 23:52:03,688 [INFO] 127.0.0.1 - - [27/Feb/2026 23:52:03] "POST /predict HTTP/1.1" 200 -
+2026-02-27 23:54:42,896 [WARNING] No trained model found at models/best_model.pkl — using heuristic fallback.
+2026-02-27 23:54:42,905 [INFO] Starting API server on port 5000 | debug=False
+2026-02-27 23:54:42,938 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-02-27 23:54:42,938 [INFO] [33mPress CTRL+C to quit[0m
+2026-02-27 23:54:52,869 [INFO] 192.168.1.2 - - [27/Feb/2026 23:54:52] "[33mGET / HTTP/1.1[0m" 404 -
+2026-02-27 23:54:52,940 [INFO] 192.168.1.2 - - [27/Feb/2026 23:54:52] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-27 23:55:05,266 [INFO] 127.0.0.1 - - [27/Feb/2026 23:55:05] "OPTIONS /predict HTTP/1.1" 200 -
+2026-02-27 23:55:05,535 [INFO] PREDICT | url=http://secure-bank-login-verification.com/update-account | prediction=Suspicious | conf=0.350 | 2.37ms
+2026-02-27 23:55:05,535 [INFO] 127.0.0.1 - - [27/Feb/2026 23:55:05] "POST /predict HTTP/1.1" 200 -
