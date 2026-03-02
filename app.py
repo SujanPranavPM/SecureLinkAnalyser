@@ -24,7 +24,6 @@ import joblib
 import numpy as np
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
-
 from feature_extractor import (
     extract_features,
     extract_feature_vector,
