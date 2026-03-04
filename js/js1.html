@@ -1,0 +1,58 @@
+<script>
+
+let students = [];
+
+function addStudent() {
+
+    let name = document.getElementById("name").value;
+    let roll = document.getElementById("roll").value;
+    let attendance = Number(document.getElementById("attendance").value);
+
+    if (name === "" || isNaN(attendance) || attendance < 0 || attendance > 100) {
+        alert("Invalid Input");
+        console.error("Invalid input");
+        return;
+    }
+
+    // ternary used
+    let status = attendance >= 75 ? "Eligible" : "Not Eligible";
+
+    students.push({
+        name: name,
+        roll: roll,
+        attendance: attendance,
+        eligible: status
+    });
+
+    document.getElementById("result").innerHTML =
+        name + " → " + status;
+
+    calculateStats();
+}
+
+function calculateStats() {
+
+    let eligibleCount = 0;
+    let notEligibleCount = 0;
+    let totalAttendance = 0;
+
+    for (let i = 0; i < students.length; i++) {
+
+        if (students[i].eligible === "Eligible") {
+            eligibleCount++;
+        } else {
+            notEligibleCount++;
+        }
+
+        totalAttendance += students[i].attendance;
+    }
+
+    let average = totalAttendance / students.length;
+
+    document.getElementById("stats").innerHTML =
+        "Eligible: " + eligibleCount +
+        " | Not Eligible: " + notEligibleCount +
+        " | Average: " + average.toFixed(2);
+}
+
+</script>

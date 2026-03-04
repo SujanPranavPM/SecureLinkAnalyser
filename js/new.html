@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gross Salary List</title>
+</head>
+<body>
+
+<h2>Gross Salary Calculator</h2>
+
+Name: <input type="text" id="name"><br><br>
+Basic Salary: <input type="number" id="salary"><br><br>
+
+<button onclick="addPerson()">Add</button>
+<div id = "av"></div>
+<h3>Employees</h3>
+<div id="output"></div>
+<
+
+<script>
+
+let employees = [];   // list type (array)
+count  = 0;
+function addPerson() {
+
+    let name = document.getElementById("name").value;
+    let basic = parseInt(document.getElementById("salary").value);
+
+    if(name === "" || isNaN(basic)) {
+        alert("Enter valid details");
+        return;
+    }
+
+    // Example gross formula
+    let gross = basic + (basic * 0.20);   // 20% extra
+count = count + 1;
+let t = t + gross;
+    // store in list
+    employees.push({
+        name: name,
+        grossSalary: gross
+    });
+
+    // print when added
+    document.getElementById("output").innerHTML += 
+        name + " " + gross + "<br>";
+
+    // clear input
+    document.getElementById("name").value = "";
+    document.getElementById("salary").value = "";
+    avg();
+}
+function avg()
+{
+ let avg = gross / count ;
+ document.getElementById("av").innerText = avg;
+}
+
+</script>
+
+</body>
+</html>

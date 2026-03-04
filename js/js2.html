@@ -1,0 +1,43 @@
+let transaction=[]
+let balance=0
+function deposit()
+{
+    let amt=parseInt(document.getElementById("amount").value)
+    if(amt>0)
+    {
+    balance=balance+amt
+    transaction.push("Deposit"+amt)
+    updateui()
+    }
+    else{
+        alert("Enter the amount")
+        return 
+    }
+}
+function withdraw()
+{
+    let amt=parseInt(document.getElementById("amount").value)
+    if(amt>balance)
+    {
+        alert("Insufficiant balance")
+        return 
+    }
+    else{
+        balance=balance-amt
+        transaction.push("Withdraw"+amt)
+        updateui()
+    }
+}
+function updateui()
+{
+    document.getElementById("balance").innerText=balance
+    let list=document.getElementById("history")
+    list.innerHTML=""
+    for(let i=0;i<transaction.length;i++)
+        {
+           let li=document.createElement("li")
+           li.innerText=transaction[i]
+           list.appendChild(li)
+        }
+    
+}

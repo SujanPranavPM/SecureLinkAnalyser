@@ -65,3 +65,19 @@
 2026-03-02 21:45:49,342 [INFO] 127.0.0.1 - - [02/Mar/2026 21:45:49] "OPTIONS /predict HTTP/1.1" 200 -
 2026-03-02 21:45:49,592 [INFO] PREDICT | url=https://docs.google.com/forms/d/e/1FAIpQLSd0J0u5t_zH_ULbCcKv9HPAfK9ETntCUV2q-Zmo | prediction=Suspicious | conf=0.450 | 0.27ms
 2026-03-02 21:45:49,592 [INFO] 127.0.0.1 - - [02/Mar/2026 21:45:49] "POST /predict HTTP/1.1" 200 -
+2026-03-02 21:51:33,753 [WARNING] No trained model found at models/best_model.pkl — using heuristic fallback.
+2026-03-02 21:51:33,754 [INFO] Starting API server on port 5000 | debug=False
+2026-03-02 21:51:33,765 [INFO] [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.2:5000
+2026-03-02 21:51:33,765 [INFO] [33mPress CTRL+C to quit[0m
+2026-03-02 21:51:48,713 [INFO] 192.168.1.2 - - [02/Mar/2026 21:51:48] "[33mGET / HTTP/1.1[0m" 404 -
+2026-03-02 21:51:48,819 [INFO] 192.168.1.2 - - [02/Mar/2026 21:51:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-03-02 21:51:54,287 [INFO] 192.168.1.2 - - [02/Mar/2026 21:51:54] "[33mGET / HTTP/1.1[0m" 404 -
+2026-03-02 21:52:14,830 [INFO] 192.168.1.2 - - [02/Mar/2026 21:52:14] "[33mGET / HTTP/1.1[0m" 404 -
+2026-03-02 21:52:15,402 [INFO] 192.168.1.2 - - [02/Mar/2026 21:52:15] "[33mGET / HTTP/1.1[0m" 404 -
+2026-03-02 21:52:15,701 [INFO] 192.168.1.2 - - [02/Mar/2026 21:52:15] "[33mGET / HTTP/1.1[0m" 404 -
+2026-03-02 21:52:27,723 [INFO] 127.0.0.1 - - [02/Mar/2026 21:52:27] "OPTIONS /predict HTTP/1.1" 200 -
+2026-03-02 21:52:27,989 [INFO] PREDICT | url=google.com | prediction=Suspicious | conf=0.350 | 0.45ms
+2026-03-02 21:52:27,989 [INFO] 127.0.0.1 - - [02/Mar/2026 21:52:27] "POST /predict HTTP/1.1" 200 -

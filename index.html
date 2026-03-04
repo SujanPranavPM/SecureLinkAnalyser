@@ -7,10 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
-/* ================================================================
-   ROOT & RESET
-   ================================================================ */
-:root {
+ :root {
   --bg:          #040810;
   --surface:     #080f1c;
   --border:      rgba(0,220,170,0.18);
@@ -45,10 +42,7 @@ body {
     repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,220,170,0.03) 40px);
 }
 
-/* ================================================================
-   SCANLINES OVERLAY
-   ================================================================ */
-body::before {
+ body::before {
   content: '';
   position: fixed; inset: 0;
   pointer-events: none;
@@ -60,18 +54,12 @@ body::before {
   z-index: 9999;
 }
 
-/* ================================================================
-   LAYOUT
-   ================================================================ */
-.page {
+ .page {
   max-width: 820px;
   margin: 0 auto;
   padding: 2.5rem 1.5rem 4rem;
 }
-
-/* ================================================================
-   HEADER
-   ================================================================ */
+ 
 header {
   text-align: center;
   margin-bottom: 2.8rem;
@@ -124,7 +112,7 @@ h1 span {
   letter-spacing: 2px;
 }
 
-/* Status bar */
+ 
 .status-bar {
   display: flex;
   align-items: center;
@@ -149,10 +137,7 @@ h1 span {
   box-shadow: 0 0 8px var(--accent);
   animation: blink 1.8s ease infinite;
 }
-
-/* ================================================================
-   CARD
-   ================================================================ */
+ 
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -175,10 +160,7 @@ h1 span {
   transform: translateY(-50%);
 }
 .card:hover { border-color: var(--border-hot); }
-
-/* ================================================================
-   INPUT SECTION
-   ================================================================ */
+ 
 .input-wrapper {
   position: relative;
   display: flex;
@@ -248,8 +230,7 @@ h1 span {
   cursor: not-allowed;
 }
 
-/* Quick examples */
-.examples {
+ .examples {
   margin-top: 0.9rem;
   display: flex;
   flex-wrap: wrap;
@@ -279,9 +260,7 @@ h1 span {
   background: rgba(0,220,170,0.1);
 }
 
-/* ================================================================
-   LOADER
-   ================================================================ */
+ 
 .loader {
   display: none;
   flex-direction: column;
@@ -314,13 +293,11 @@ h1 span {
   animation: flicker 1.5s ease infinite;
 }
 
-/* ================================================================
-   RESULT SECTION
-   ================================================================ */
+ 
 #result { display: none; animation: fadeUp 0.4s ease both; }
 #result.show { display: block; }
 
-/* Verdict banner */
+ 
 .verdict {
   display: flex;
   align-items: center;
@@ -380,8 +357,7 @@ h1 span {
   opacity: 0.6;
   text-align: right;
 }
-
-/* Risk Meter */
+ 
 .risk-meter-wrap {
   margin-bottom: 1.2rem;
 }
@@ -411,7 +387,7 @@ h1 span {
   letter-spacing: 1px;
 }
 
-/* Reasons */
+ 
 .reasons-grid {
   display: grid;
   gap: 0.5rem;
@@ -440,7 +416,7 @@ h1 span {
 .reason-item.safe { border-left-color: var(--safe); }
 .reason-item.safe .reason-icon { color: var(--safe); }
 
-/* Features grid */
+ 
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -473,7 +449,7 @@ h1 span {
 }
 .feat-chip.flagged .feat-value { color: var(--warning); }
 
-/* Section title */
+ 
 .section-title {
   font-family: var(--mono);
   font-size: 0.62rem;
@@ -492,7 +468,7 @@ h1 span {
   background: var(--border);
 }
 
-/* Latency */
+ 
 .meta-row {
   display: flex;
   justify-content: flex-end;
@@ -507,9 +483,7 @@ h1 span {
 }
 .meta-item span { color: var(--accent); }
 
-/* ================================================================
-   ERROR
-   ================================================================ */
+ 
 .error-banner {
   display: none;
   background: rgba(255,62,94,0.08);
@@ -523,9 +497,7 @@ h1 span {
 }
 .error-banner.show { display: block; }
 
-/* ================================================================
-   ANIMATIONS
-   ================================================================ */
+ 
 @keyframes fadeDown {
   from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -552,10 +524,7 @@ h1 span {
   92%, 94%, 96%, 98% { opacity: 0.5; }
   93%, 95%, 97%      { opacity: 1; }
 }
-
-/* ================================================================
-   FOOTER
-   ================================================================ */
+ 
 footer {
   text-align: center;
   padding-top: 2rem;
@@ -565,9 +534,7 @@ footer {
   letter-spacing: 2px;
 }
 
-/* ================================================================
-   RESPONSIVE
-   ================================================================ */
+ 
 @media (max-width: 540px) {
   .verdict { flex-wrap: wrap; }
   .verdict-confidence { text-align: left; }
@@ -578,7 +545,7 @@ footer {
 <body>
 <div class="page">
 
-  <!-- HEADER -->
+  
   <header>
     <div class="logo-mark">THREATSCAN v1.0</div>
     <h1>AI <span>URL</span> Intelligence</h1>
@@ -596,7 +563,7 @@ footer {
     </div>
   </header>
 
-  <!-- INPUT CARD -->
+   
   <div class="card" data-label="// URL INPUT">
     <div class="input-wrapper">
       <span class="input-icon">⟶</span>
@@ -619,7 +586,7 @@ footer {
     </div>
   </div>
 
-  <!-- LOADER -->
+  
   <div id="loader" class="loader">
     <div class="loader-bars">
       <div class="loader-bar"></div>
@@ -631,14 +598,11 @@ footer {
     <div class="loader-text" id="loaderText">INITIALIZING SCAN...</div>
   </div>
 
-  <!-- ERROR BANNER -->
-  <div class="error-banner" id="errorBanner"></div>
+   <div class="error-banner" id="errorBanner"></div>
 
-  <!-- RESULT -->
-  <div id="result">
+   <div id="result">
 
-    <!-- Verdict -->
-    <div class="verdict" id="verdictBanner">
+     <div class="verdict" id="verdictBanner">
       <div class="verdict-icon" id="verdictIcon"></div>
       <div class="verdict-body">
         <div class="verdict-label" id="verdictLabel"></div>
@@ -650,8 +614,7 @@ footer {
       </div>
     </div>
 
-    <!-- Risk Meter -->
-    <div class="card" data-label="// RISK METER">
+     <div class="card" data-label="// RISK METER">
       <div class="risk-meter-track">
         <div class="risk-meter-fill" id="riskFill"></div>
       </div>
@@ -662,14 +625,12 @@ footer {
       </div>
     </div>
 
-    <!-- Reasons -->
-    <div class="card" data-label="// THREAT ANALYSIS">
+     <div class="card" data-label="// THREAT ANALYSIS">
       <div class="section-title">Detection Reasons</div>
       <div class="reasons-grid" id="reasonsGrid"></div>
     </div>
 
-    <!-- Features -->
-    <div class="card" data-label="// FEATURE VECTOR">
+     <div class="card" data-label="// FEATURE VECTOR">
       <div class="section-title">Extracted Features</div>
       <div class="features-grid" id="featuresGrid"></div>
       <div class="meta-row">
@@ -678,18 +639,15 @@ footer {
       </div>
     </div>
 
-  </div><!-- /result -->
+  </div>
 
   <footer>THREATSCAN © 2025 — FINAL YEAR CYBERSECURITY PROJECT</footer>
 </div>
 
-<script>
-// ================================================================
-// CONFIG
-// ================================================================
+<script> 
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
   ? 'http://localhost:5000'
-  : '';  // same-origin in production
+  : '';  
 
 const SCAN_MESSAGES = [
   "INITIALIZING SCAN...",
@@ -702,9 +660,6 @@ const SCAN_MESSAGES = [
 
 let loaderInterval = null;
 
-// ================================================================
-// UI HELPERS
-// ================================================================
 
 function fillExample(url) {
   document.getElementById('urlInput').value = url;
@@ -744,22 +699,16 @@ function setLoading(on) {
   }
 }
 
-// ================================================================
-// RENDER RESULT
-// ================================================================
-
 function renderResult(data) {
   const conf      = data.confidence;
-  const risk      = data.risk_level;   // Low / Medium / High
-  const pred      = data.prediction;  // Safe / Suspicious / Malicious
+  const risk      = data.risk_level;   
+  const pred      = data.prediction;  
   const reasons   = data.reasons || [];
   const features  = data.features || {};
 
-  // Determine colour class
   const cls = risk === 'Low' ? 'safe' : risk === 'Medium' ? 'warning' : 'danger';
   const icon = risk === 'Low' ? '✓' : risk === 'Medium' ? '⚠' : '✕';
 
-  // Verdict
   const banner = document.getElementById('verdictBanner');
   banner.className = `verdict ${cls}`;
   document.getElementById('verdictIcon').textContent  = icon;
@@ -767,12 +716,10 @@ function renderResult(data) {
   document.getElementById('verdictSub').textContent   = `RISK LEVEL: ${risk.toUpperCase()}`;
   document.getElementById('confNumber').textContent   = `${Math.round(conf * 100)}%`;
 
-  // Risk meter
   const fill = document.getElementById('riskFill');
   fill.className = `risk-meter-fill ${cls}`;
   setTimeout(() => { fill.style.width = `${Math.round(conf * 100)}%`; }, 50);
 
-  // Reasons
   const grid = document.getElementById('reasonsGrid');
   grid.innerHTML = '';
   const isClean = reasons.length === 1 && reasons[0].includes('No specific');
@@ -783,7 +730,6 @@ function renderResult(data) {
     grid.appendChild(div);
   });
 
-  // Features
   const FLAGGED = [
     'has_ip_address','num_at_signs','has_suspicious_keywords',
     'is_url_shortener','has_double_slash_redirect','num_subdomains',
@@ -820,17 +766,13 @@ function renderResult(data) {
     fgrid.appendChild(chip);
   });
 
-  // Meta
   document.getElementById('modelName').textContent = data.model || '—';
   document.getElementById('latency').textContent   = data.latency_ms ? `${data.latency_ms}ms` : '—';
 
-  // Show result
+
   document.getElementById('result').classList.add('show');
 }
 
-// ================================================================
-// MAIN ANALYSE FUNCTION
-// ================================================================
 
 async function analyzeURL() {
   const url = document.getElementById('urlInput').value.trim();
@@ -868,12 +810,11 @@ async function analyzeURL() {
   }
 }
 
-// Enter key support
 document.getElementById('urlInput').addEventListener('keydown', e => {
   if (e.key === 'Enter') analyzeURL();
 });
 
-// Auto-focus
+
 document.getElementById('urlInput').focus();
 </script>
 </body>

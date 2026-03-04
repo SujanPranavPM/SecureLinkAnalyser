@@ -1,0 +1,218 @@
+# ✅ QUESTIONS 7 TO 13 – ULTRA SIMPLE VERSION (NO LOOPS FOR PRINTING)
+
+---
+
+# 7️⃣ Employee Payroll (Very Simple)
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Payroll</h2>
+<input id="name" placeholder="Name">
+<input id="basic" placeholder="Basic">
+<input id="allow" placeholder="Allowance">
+<button onclick="addEmp()">Add</button>
+<p id="output"></p>
+
+<script>
+let totalSalary = 0;
+let count = 0;
+
+function addEmp(){
+ let name = document.getElementById("name").value;
+ let basic = parseInt(document.getElementById("basic").value);
+ let allow = parseInt(document.getElementById("allow").value);
+
+ if(name==="" || isNaN(basic) || isNaN(allow)){
+  alert("Invalid Input");
+  return;
+ }
+
+ let gross = basic + allow;
+ totalSalary += gross;
+ count++;
+
+ document.getElementById("output").innerHTML +=
+  name + " Gross: " + gross + "<br>";
+
+ document.getElementById("output").innerHTML +=
+  "Average Salary: " + (totalSalary/count).toFixed(2) + "<br><br>";
+}
+</script>
+</body>
+</html>
+```
+
+---
+
+# 8️⃣ Attendance (Ultra Simple)
+
+```html
+<script>
+let eligibleCount = 0;
+let notEligibleCount = 0;
+let total = 0;
+let count = 0;
+
+function addStudent(){
+ let name = document.getElementById("name").value;
+ let attendance = parseInt(document.getElementById("attendance").value);
+
+ if(name==="" || isNaN(attendance)){
+  alert("Invalid Input");
+  return;
+ }
+
+ let status = attendance >= 75 ? "Eligible" : "Not Eligible";
+
+ if(status==="Eligible") eligibleCount++;
+ else notEligibleCount++;
+
+ total += attendance;
+ count++;
+
+ document.getElementById("result").innerHTML +=
+  name + " - " + status + "<br>";
+
+ document.getElementById("stats").innerHTML =
+  "Eligible: " + eligibleCount +
+  " | Not Eligible: " + notEligibleCount +
+  " | Avg: " + (total/count).toFixed(2);
+}
+</script>
+```
+
+---
+
+# 9️⃣ Bank Account (Ultra Simple)
+
+```html
+<script>
+let balance = 0;
+
+function deposit(){
+ let amt = parseInt(document.getElementById("amount").value);
+ if(isNaN(amt) || amt<=0){ alert("Invalid"); return; }
+ balance += amt;
+ document.getElementById("balance").innerText = balance;
+ document.getElementById("history").innerHTML += "Deposit " + amt + "<br>";
+}
+
+function withdraw(){
+ let amt = parseInt(document.getElementById("amount").value);
+ if(isNaN(amt) || amt<=0 || amt>balance){ alert("Invalid"); return; }
+ balance -= amt;
+ document.getElementById("balance").innerText = balance;
+ document.getElementById("history").innerHTML += "Withdraw " + amt + "<br>";
+}
+</script>
+```
+
+---
+
+# 🔟 Student Result (Ultra Simple)
+
+```html
+<script>
+let totalMarks = 0;
+let countStudents = 0;
+
+function addStudent(){
+ let name = document.getElementById("name").value;
+ let marks = parseInt(document.getElementById("marks").value);
+
+ if(name==="" || isNaN(marks)){ alert("Invalid"); return; }
+
+ let grade;
+ if(marks>=90) grade="A";
+ else if(marks>=75) grade="B";
+ else if(marks>=50) grade="C";
+ else grade="Fail";
+
+ totalMarks += marks;
+ countStudents++;
+
+ document.getElementById("list").innerHTML += name + " - " + grade + "<br>";
+
+ document.getElementById("summary").innerHTML =
+  "Average: " + (totalMarks/countStudents).toFixed(2);
+}
+</script>
+```
+
+---
+
+# 1️⃣1️⃣ Inventory (Ultra Simple)
+
+```html
+<script>
+function addItem(){
+ let name = document.getElementById("name").value;
+ let qty = parseInt(document.getElementById("qty").value);
+ let reorder = parseInt(document.getElementById("reorder").value);
+
+ if(name==="" || isNaN(qty) || isNaN(reorder)){ alert("Invalid"); return; }
+
+ let status = qty<=reorder ? "LOW" : "OK";
+
+ document.getElementById("list").innerHTML +=
+  name + " - " + status + "<br>";
+}
+</script>
+```
+
+---
+
+# 1️⃣2️⃣ Electricity Bill (Ultra Simple)
+
+```html
+<script>
+function calc(){
+ let name = document.getElementById("name").value;
+ let units = parseInt(document.getElementById("units").value);
+
+ if(name==="" || isNaN(units)){ alert("Invalid"); return; }
+
+ let bill=0;
+ if(units<=100) bill=units*2;
+ else if(units<=200) bill=100*2+(units-100)*3;
+ else bill=100*2+100*3+(units-200)*5;
+
+ document.getElementById("output").innerHTML +=
+  name + " Bill: ₹" + bill + "<br>";
+}
+</script>
+```
+
+---
+
+# 1️⃣3️⃣ Expense Tracker (Ultra Simple)
+
+```html
+<script>
+let totalExpense = 0;
+
+function addExpense(){
+ let desc = document.getElementById("desc").value;
+ let amount = parseInt(document.getElementById("amount").value);
+
+ if(desc==="" || isNaN(amount)){ alert("Invalid"); return; }
+
+ totalExpense += amount;
+
+ document.getElementById("list").innerHTML +=
+  desc + " - ₹" + amount + "<br>";
+
+ document.getElementById("total").innerText =
+  "Total: ₹" + totalExpense;
+}
+</script>
+```
+
+---
+
+✔ No loops for printing
+✔ Direct print inside onclick
+✔ Very beginner level
+✔ Easy to memorize

@@ -30,18 +30,11 @@ from feature_extractor import (
     get_triggered_reasons,
     FEATURE_NAMES,
 )
-
-# ---------------------------------------------------------------------------
-# App Setup
-# ---------------------------------------------------------------------------
-
+ 
 app = Flask(__name__, static_folder="../frontend", static_url_path="")
 CORS(app)
 
-# ---------------------------------------------------------------------------
-# Logging
-# ---------------------------------------------------------------------------
-
+ 
 os.makedirs("logs", exist_ok=True)
 logging.basicConfig(
     level=logging.INFO,
@@ -53,10 +46,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# Model Loading
-# ---------------------------------------------------------------------------
-
+ 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "models", "best_model.pkl")
 META_PATH  = os.path.join(os.path.dirname(__file__), "models", "model_metadata.json")
 
@@ -82,10 +72,7 @@ def load_model():
 load_model()
 
 
-# ---------------------------------------------------------------------------
-# Risk Scoring
-# ---------------------------------------------------------------------------
-
+ 
 THRESHOLDS = {
     "low":    (0.0,  0.35),
     "medium": (0.35, 0.65),
@@ -106,11 +93,7 @@ def probability_to_risk(probability: float) -> tuple:
             return RISK_LABELS[level]
     return ("Malicious", "High")
 
-
-# ---------------------------------------------------------------------------
-# Heuristic Fallback (when no model is trained yet)
-# ---------------------------------------------------------------------------
-
+ 
 def heuristic_score(features: dict) -> float:
     """
     Rule-based probability score when no ML model is available.
@@ -131,11 +114,7 @@ def heuristic_score(features: dict) -> float:
 
     return min(score, 0.98)
 
-
-# ---------------------------------------------------------------------------
-# Input Validation
-# ---------------------------------------------------------------------------
-
+ 
 URL_PATTERN = re.compile(
     r"^(https?://)?"
     r"(([a-zA-Z0-9\-]+\.)+[a-zA-Z]{2,})"
@@ -160,11 +139,7 @@ def validate_url(url: str) -> tuple[bool, str]:
         return False, "Invalid URL format."
     return True, ""
 
-
-# ---------------------------------------------------------------------------
-# Rate Limiting (simple in-memory, replace with Redis for production)
-# ---------------------------------------------------------------------------
-
+ 
 _rate_store: dict = {}
 RATE_LIMIT = 60      # requests
 RATE_WINDOW = 60     # seconds
@@ -189,10 +164,7 @@ def rate_limit(f):
     return decorated
 
 
-# ---------------------------------------------------------------------------
-# Routes
-# ---------------------------------------------------------------------------
-
+ 
 @app.route("/")
 def index():
     return send_from_directory(app.static_folder, "index.html")
@@ -238,25 +210,25 @@ def predict():
     """
     start = time.perf_counter()
 
-    # Parse request
+   
     data = request.get_json(silent=True)
     if not data:
         return jsonify({"error": "Request body must be JSON."}), 400
 
     raw_url = data.get("url", "")
 
-    # Sanitise + validate
+    
     url = str(raw_url).strip()
     valid, err = validate_url(url)
     if not valid:
         return jsonify({"error": err}), 422
 
     try:
-        # Extract features
+        
         features = extract_features(url)
         feature_vector = extract_feature_vector(url).reshape(1, -1)
 
-        # Predict
+        
         if _model is not None:
             probability = float(_model.predict_proba(feature_vector)[0][1])
             model_name = _metadata.get("best_model", "ML Model")
@@ -289,11 +261,7 @@ def predict():
         log.error(f"Prediction error: {e}\n{traceback.format_exc()}")
         return jsonify({"error": "Internal prediction error. Please try again."}), 500
 
-
-# ---------------------------------------------------------------------------
-# Error Handlers
-# ---------------------------------------------------------------------------
-
+ 
 @app.errorhandler(404)
 def not_found(e):
     return jsonify({"error": "Endpoint not found."}), 404
@@ -308,11 +276,7 @@ def method_not_allowed(e):
 def internal_error(e):
     return jsonify({"error": "Internal server error."}), 500
 
-
-# ---------------------------------------------------------------------------
-# Entry Point
-# ---------------------------------------------------------------------------
-
+ 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     debug = os.environ.get("FLASK_ENV", "production") == "development"
